@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import TodoControl from "./TodoControl";
+import TodoControl from './TodoControl';
 
 class TodoItem extends Component {
 

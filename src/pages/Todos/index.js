@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import Todos from './Todos';
 import {closeTodo, completeTodo, editTodo, fetchTodos, newTodo} from '../../modules/todos';
-import {bindActionCreators} from "redux";
+import {bindActionCreators} from 'redux';
 
 const mapStateToProps = store => ({
     todos: store.todos.todos,
