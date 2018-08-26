@@ -8,11 +8,7 @@ class TodoList extends Component {
         this.props.fetchTodos();
     }
 
-    completeTodo(index){
-        console.log(index);
-    }
-
-    closeTodo(index){
+    closeAllCompleted(index){
         console.log(index);
     }
 
@@ -20,8 +16,9 @@ class TodoList extends Component {
         return this.props.todos.map((todo, index) => {
             return <TodoItem
                 key={index}
-                completeTodo={() => this.completeTodo(index)}
-                closeTodo={() => this.closeTodo(index)}
+                completeTodo={() => this.props.completeTodo(index)}
+                closeTodo={() => this.props.closeTodo(index)}
+                editTodo={(text) => this.props.editTodo(index, text)}
                 {...todo}/>
         })
     }

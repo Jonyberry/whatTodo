@@ -2,6 +2,10 @@ import {todos} from '../mock/todos';
 
 const FETCH_TODOS = "FETCH_TODOS";
 const FETCH_TODOS_FULFILLED = "FETCH_TODOS_FULFILLED";
+const NEW_TODO = "NEW_TODO";
+const CLOSE_TODO = "CLOSE_TODO";
+const EDIT_TODO = "EDIT_TODO";
+const COMPLETE_TODO = "COMPLETE_TODO";
 
 export const initialState = {
     todos: []
@@ -9,10 +13,42 @@ export const initialState = {
 
 export default function reducer(state = initialState, action) {
     switch (action.type) {
-        case FETCH_TODOS_FULFILLED:{
+        case FETCH_TODOS_FULFILLED: {
             return {
                 ...state,
                 todos: action.payload
+            }
+        }
+        case NEW_TODO: {
+            return {
+                ...state,
+                todos: [...state.todos, action.payload]
+            }
+        }
+        case CLOSE_TODO: {
+            return {
+                ...state,
+                todos: [...state.todos.slice(0, action.payload), ...state.todos.slice(action.payload + 1)]
+            }
+        }
+        case EDIT_TODO: {
+            return {
+                ...state,
+                todos: [
+                    ...todos.slice(0, action.payload.index),
+                    {name: action.payload.name, completed: todos[action.payload.index].completed},
+                    ...todos.slice(action.payload.index + 1)
+                ]
+            }
+        }
+        case COMPLETE_TODO: {
+            return {
+                ...state,
+                todos: [
+                    ...todos.slice(0, action.payload.index),
+                    {name: todos[action.payload.index].name, completed: true},
+                    ...todos.slice(action.payload.index + 1)
+                ]
             }
         }
         default: {
@@ -29,6 +65,33 @@ export function fetchTodos() {
     }
 }
 
+export function newTodo(name) {
+    return {
+        type: NEW_TODO,
+        payload: {name, completed: false}
+    }
+}
+
+export function closeTodo(index) {
+    return {
+        type: CLOSE_TODO,
+        payload: index
+    }
+}
+
+export function editTodo(index, name) {
+    return {
+        type: EDIT_TODO,
+        payload: {index, name}
+    }
+}
+
+export function completeTodo(index) {
+    return {
+        type: COMPLETE_TODO,
+        payload: {index}
+    }
+}
 
 
 
