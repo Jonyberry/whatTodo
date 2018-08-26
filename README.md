@@ -1,8 +1,8 @@
 # WhaTodo
 Basic application for making todos.
 
-##Built With
+## Built With
 * bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
-##Authors
+## Authors
 * Jan Bártl
