@@ -16,7 +16,7 @@ class TodoAdd extends Component {
 
     render(){
         let {name} = this.state;
-        return  <div>
+        return <div className="todo-add">
             <input value={name} onChange={(e) => this.handleInput(e)}/>
             {this.state.name.length > 0 ?
                 <span className="todo-control new" onClick={()=>this.props.newTodo(name)}>add</span> : null}

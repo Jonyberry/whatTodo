@@ -35,19 +35,20 @@ export default function reducer(state = initialState, action) {
             return {
                 ...state,
                 todos: [
-                    ...todos.slice(0, action.payload.index),
-                    {name: action.payload.name, completed: todos[action.payload.index].completed},
-                    ...todos.slice(action.payload.index + 1)
+                    ...state.todos.slice(0, action.payload.index),
+                    {name: action.payload.name, completed: state.todos[action.payload.index].completed},
+                    ...state.todos.slice(action.payload.index + 1)
                 ]
             }
         }
         case COMPLETE_TODO: {
+            console.log()
             return {
                 ...state,
                 todos: [
-                    ...todos.slice(0, action.payload.index),
-                    {name: todos[action.payload.index].name, completed: true},
-                    ...todos.slice(action.payload.index + 1)
+                    ...state.todos.slice(0, action.payload.index),
+                    {name: state.todos[action.payload.index].name, completed: true},
+                    ...state.todos.slice(action.payload.index + 1)
                 ]
             }
         }
