@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css?family=Titillium+Web:300,400,400i,700');
+
+$mainColor: orangered;
+
+html{
+  font-family: 'Titillium Web', sans-serif;
+}
+
+.main-title{
+  font-size: 3.5rem;
+  font-weight: 300;
+  text-align: center;
+  margin-top: 100px;
+  color: $mainColor;
+  b{
+    font-weight: 700;
+  }
+}
